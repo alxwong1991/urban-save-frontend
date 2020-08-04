@@ -1,0 +1,10 @@
+// products
+export const GET_PRODUCT_CHAIRS = "GET_PRODUCT_CHAIRS";
+export const GET_PRODUCT_TABLES = "GET_PRODUCT_TABLES";
+export const GET_PRODUCT_OTHER_EQUIPMENTS = "GET_PRODUCT_OTHER_EQUIPMENTS";
+
+// cart
+export const ADD_TO_CART = "ADD_TO_CART";
+export const UPDATE_ON_CART = "UPDATE_ON_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+
