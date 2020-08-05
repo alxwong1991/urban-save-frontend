@@ -5,7 +5,7 @@ import {
 } from '../constants/actionTypes'
 import axios from 'axios'
 
-// //get product chairs from api
+//get product chairs from api
 
 export const getProductChairs = () => {
   return dispatch => {

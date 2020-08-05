@@ -10,8 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { getProductChairs } from '../../stores/actions/getProductsAction';
-import { addChairsOrders } from '../../stores/actions/shoppingCartActions'
+import { addChairsOrders } from '../../stores/actions/shoppingCartActions';
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
 
 const useStyles = (theme) => ({
 
@@ -58,8 +59,8 @@ class Chairs extends Component {
     }
   }
 
-  handleClick = (event) => {
-    console.log("adding to cart")
+  handleClick = (index) => {
+    this.props.addProductChairDispatcher(index);
   }
 
   render() {
@@ -88,7 +89,7 @@ class Chairs extends Component {
             {/* End hero unit */}
             <Grid container spacing={10}>
               {this.state.chairData && this.state.chairData.length > 0
-                ? this.state.chairData.map((card) => (
+                ? this.state.chairData.map((card,index) => (
                   <Grid item key={card} xs={12} sm={6}>
                     <Card className={classes.card}>
                       <CardMedia
@@ -114,9 +115,11 @@ class Chairs extends Component {
                         <Button size="small" color="primary">
                           View
                           </Button>
-                        <Button size="small" color="primary" onClick={this.handleClick}>
+                          <Link className={classes.button} to="/shopping-cart">
+                        <Button size="small" color="primary" onClick={this.handleClick(index)}>
                           Add to cart
                           </Button>
+                          </Link>
                         <Typography color="primary">
                           Price: ${card.product_price}, Stock Left:{" "}
                           {card.max_stock_available}
@@ -137,8 +140,8 @@ class Chairs extends Component {
 const mapStateToProps = (state) => {
   console.log(state.product)
   return {
-    items: state.product.chairData
-    // order: state.shoppingCartReducer.chairOrder
+    items: state.product.chairData,
+    order: state.cart.chairOrder
   }
 }
 
@@ -146,10 +149,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProductChairDispacther: () => {
       dispatch(getProductChairs())
+    },
+    addProductChairDispatcher: () => {
+      dispatch(addChairsOrders())
     }
-    // addChairsOrdersDispacther: () => {
-    //   dispatch(addChairsOrders())
-    // }
 
   }
 }
