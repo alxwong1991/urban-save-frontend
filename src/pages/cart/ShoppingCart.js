@@ -4,21 +4,27 @@ import ShoppingCartHeader from "../../components/ShoppingCart/ShoppingCartHeader
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from '@material-ui/core/TableHead';
+import { connect } from "react-redux";
 
 class ShoppingCart extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+
   render() {
+    // cosnt { classes } = this.props;
+
     return (
       <div className="shopping-cart" align="center">
         <Container>
           <ShoppingCartHeader />
-          <TableHead align="right">
-          <TableRow >
-            <TableCell>Product</TableCell>
-            <TableCell>Item</TableCell>
-            <TableCell>Item</TableCell>
-            <TableCell>Quantity</TableCell>
-            <TableCell>Unit Price($)</TableCell>
-          </TableRow>
+          <TableHead>
+            <TableRow >
+              <TableCell>Product</TableCell>
+              <TableCell>Quantity</TableCell>
+              <TableCell>Unit Price($)</TableCell>
+            </TableRow>
           </TableHead>
         </Container>
       </div>
