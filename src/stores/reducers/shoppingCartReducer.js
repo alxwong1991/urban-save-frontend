@@ -4,16 +4,29 @@ import {
     REMOVE_FROM_CART
   } from '../constants/actionTypes'
 
-const initState = {
-    chairOrder: []
+const initCartState = {
+    addChair: [],
+    updateChair: [],
+    removeChair: []
+
 }
 
-const shoppingCartReducer = (state = initState, action) => {
+const shoppingCartReducer = (state = initCartState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
             return {
                 ...state,
-                chairOrder: [...action.payload]
+                addChair: [...action.payload]
+            }
+        case UPDATE_ON_CART:
+            return {
+                ...state,
+                updateChair: [...action.payload]
+            }
+        case REMOVE_FROM_CART:
+            return {
+                ...state,
+                removeChair: [...action.payload]
             }
             default:
                 return {

@@ -38,7 +38,7 @@ export default function ShoppingCart() {
       <hr className={classes.Line}/>
 
       <Grid container direction="row" spacing={0}>
-        <Link className={classes.button} to="/tables">
+        <Link className={classes.button} to="/">
           <Button>
             <ArrowLeftIcon />
             Back to Shopping

@@ -2,7 +2,7 @@ import { GET_PRODUCT_CHAIRS,
 GET_PRODUCT_TABLES,
 GET_PRODUCT_OTHER_EQUIPMENTS } from '../constants/actionTypes';
 
-const initState = {
+const initProductState = {
 
     chairData: [],
     tableData: [],
@@ -14,7 +14,7 @@ const initState = {
     // chairImage: []
 }
 
-const productsReducer = (state = initState, action) => {
+const productsReducer = (state = initProductState, action) => {
     switch (action.type) {
         case GET_PRODUCT_CHAIRS:
             return {

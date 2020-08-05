@@ -5,6 +5,7 @@ import {
 } from '../constants/actionTypes'
 import axios from 'axios'
 
+require('dotenv').config()
 //get product chairs from api
 
 export const getProductChairs = () => {

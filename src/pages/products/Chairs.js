@@ -60,6 +60,7 @@ class Chairs extends Component {
   }
 
   handleClick = (index) => {
+    console.log("adding to cart")
     this.props.addProductChairDispatcher(index);
   }
 
