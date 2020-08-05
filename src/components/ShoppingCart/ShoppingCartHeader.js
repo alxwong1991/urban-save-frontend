@@ -8,14 +8,7 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 
 export default function ShoppingCart() {
   const useStyles = makeStyles({
-    root: {
-      maxWidth: "100%"
-    },
-    bullet: {
-      display: "inline-block",
-      margin: "0 2px",
-      transform: "scale(0.8)"
-    },
+
     title: {
       fontSize: 50,
       marginBottom:"-18px",

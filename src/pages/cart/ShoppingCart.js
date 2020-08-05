@@ -8,17 +8,16 @@ import TableHead from '@material-ui/core/TableHead';
 class ShoppingCart extends Component {
   render() {
     return (
-      <div className="shopping-cart">
+      <div className="shopping-cart" align="center">
         <Container>
           <ShoppingCartHeader />
-          <TableHead>
-          <TableRow>
-            <TableCell align="center">Product</TableCell>
-            <TableCell align="center">Item</TableCell>
-            <TableCell align="center">Item</TableCell>
-            <TableCell align="center">Quantity</TableCell>
-            <TableCell align="center">Unit Price($)</TableCell>
-            <TableCell align="center"></TableCell>
+          <TableHead align="right">
+          <TableRow >
+            <TableCell>Product</TableCell>
+            <TableCell>Item</TableCell>
+            <TableCell>Item</TableCell>
+            <TableCell>Quantity</TableCell>
+            <TableCell>Unit Price($)</TableCell>
           </TableRow>
           </TableHead>
         </Container>

@@ -39,17 +39,30 @@ const useStyles = (theme) => ({
 });
 
 class Tables extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
-
+  constructor(props) {
+    super(props);
+    this.state = { tableData: [] };
+  }
   componentDidMount() {
     this.props.getProductTableDispacther();
+  }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    console.log(prevProps);
+    console.log(this.props.items);
+    if (this.props.items !== prevProps.items) {
+      this.setState({
+        tableData: this.props.items,
+      });
+    }
+  }
+
+  handleClick = (event) => {
+    console.log("adding to cart")
   }
 
   render() {
     const { classes } = this.props;
-
     return (
       <React.Fragment>
         <CssBaseline />
@@ -57,45 +70,59 @@ class Tables extends Component {
           {/* Hero unit */}
           <div className={classes.heroContent}>
             <Container maxWidth="sm">
-              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
                 Office Tables
-            </Typography>
+              </Typography>
             </Container>
           </div>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={10}>
-              {this.props.item.length > 0 ? this.props.item.map((card) => (
-                <Grid item key={card} xs={12} sm={6}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={card.product_image}
-                      title={card.product_name}
-                    />
-                    <CardContent className={classes.cardContent}>
-                    </CardContent>
-                    <Typography gutterBottom variant="h5" component="h2" align="center">
-                      {card.product_name}
-                    </Typography>
-                    <Typography align="center">
-                      {card.product_description}
-                    </Typography>
-                    <CardActions>
-                      <Button size="small" color="primary">
-                        View
-                    </Button>
-                      <Button size="small" color="primary">
-                        Add to cart
-                    </Button>
-                    <Typography color="primary">
-                      Price: ${card.product_price},
-                      Stock Left: {card.max_stock_available}
-                    </Typography>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              )) : ''}
+              {this.state.tableData && this.state.tableData.length > 0
+                ? this.state.tableData.map((card) => (
+                  <Grid item key={card} xs={12} sm={6}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={card.product_image}
+                        title={card.product_name}
+                      />
+                      <CardContent
+                        className={classes.cardContent}
+                      ></CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                        align="center"
+                      >
+                        {card.product_name}
+                      </Typography>
+                      <Typography align="center">
+                        {card.product_description}
+                      </Typography>
+                      <CardActions>
+                        <Button size="small" color="primary">
+                          View
+                          </Button>
+                        <Button size="small" color="primary" onClick={this.handleClick}>
+                          Add to cart
+                          </Button>
+                        <Typography color="primary">
+                          Price: ${card.product_price}, Stock Left:{" "}
+                          {card.max_stock_available}
+                        </Typography>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))
+                : "Should be loading"}
             </Grid>
           </Container>
         </main>
@@ -104,9 +131,10 @@ class Tables extends Component {
   }
 }
 
+
 const mapStateToProps = (state) => {
   return {
-    item: state.tableData
+    items: state.product.tableData
   }
 }
 

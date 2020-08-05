@@ -52,7 +52,7 @@ class About extends Component {
           <Typography variant="h5" align="center" color="textSecondary" paragraph>
             Moving to a smaller office or planning to close your company? 
             We at Urban Save will save you all the hassles in selling your office furnitures and equipments.
-            Please feel free to browse our pages and don't forget to become a fan of us on social medias!
+            Please feel free to browse our pages and don't forget to be a fan of us on social medias!
             </Typography>
 
         </Container>
