@@ -40,15 +40,34 @@ const useStyles = (theme) => ({
 });
 
 class Chairs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { chairData: [] };
+  }
 
   componentDidMount() {
     this.props.getProductChairDispacther();
+    // this.setState({
+    //   chairData: this.props.items.chairData
+    // })
     // this.props.addChairsOrdersDispacther();
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+  console.log(prevProps)
+  console.log(this.props.items.chairData);
+    if (this.props.items.chairData !== prevProps.chairData) {
+      this.setState({
+  chairData: this.props.items.chairData
+    })
+  }
+}
+
   render() {
     const { classes } = this.props;
-
+    console.log(this.props.items.chairData)
+    console.log(this.state.chairData)
     return (
       <React.Fragment>
         <CssBaseline />
@@ -64,7 +83,7 @@ class Chairs extends Component {
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={10}>
-              {this.props.items.length > 0 ? this.props.items.map((card) => (
+              {this.state.chairData.length > 0 ? this.state.chairData.map((card) => (
                 <Grid item key={card} xs={12} sm={6}>
                   <Card className={classes.card}>
                     <CardMedia
@@ -94,7 +113,7 @@ class Chairs extends Component {
                     </CardActions>
                   </Card>
                 </Grid>
-              )) : ''}
+              )) : "Should be loading"}
             </Grid>
           </Container>
         </main>
@@ -104,10 +123,10 @@ class Chairs extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.getProductsReducer.chairData)
+  console.log(state.product)
   return {
-    item: state.getProductsReducer.chairData,
-    order: state.shoppingCartReducer.chairOrder
+    items: state.product.chairData
+    // order: state.shoppingCartReducer.chairOrder
   }
 }
 
