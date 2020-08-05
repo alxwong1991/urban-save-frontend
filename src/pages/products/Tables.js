@@ -47,7 +47,6 @@ class Tables extends Component {
     this.props.getProductTableDispacther();
   }
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
     console.log(prevProps);
     console.log(this.props.items);
     if (this.props.items !== prevProps.items) {
