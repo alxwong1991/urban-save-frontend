@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { getProductOtherEquipments } from '../../stores/actions/getProductsAction';
+import { getProductOtherEquipments } from '../../stores/actions/productsAction';
 import { connect } from 'react-redux'
 
 const useStyles = (theme) => ({

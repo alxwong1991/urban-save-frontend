@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { shoppingCart } from '../stores/actions/shoppingCartActions'
-import { connect } from 'react-redux'
 
 
 const useStyles = (theme) => ({

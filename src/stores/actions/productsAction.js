@@ -6,7 +6,6 @@ import {
 import axios from 'axios'
 
 require('dotenv').config()
-//get product chairs from api
 
 export const getProductChairs = () => {
   return dispatch => {

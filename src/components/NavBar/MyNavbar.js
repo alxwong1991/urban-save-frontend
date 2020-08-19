@@ -6,6 +6,24 @@ import Nav from 'react-bootstrap/Nav'
 
 
 class MyNavbar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      isOpen: false,
+      navCollapsed: true,
+      showNavBar: false
+    };    
+  }
+
+  toggle() {
+    console.log("clicked");
+
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     return (
       <div className="custom-navbar">

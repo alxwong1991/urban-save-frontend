@@ -9,10 +9,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { getProductChairs } from '../../stores/actions/getProductsAction';
-import { addChairsOrders } from '../../stores/actions/shoppingCartActions';
+import { getProductChairs } from '../../stores/actions/productsAction';
+import { addChairsOrders } from '../../stores/actions/shoppingCartAction';
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom";
+
 
 const useStyles = (theme) => ({
 
@@ -62,6 +62,7 @@ class Chairs extends Component {
   handleClick = (index) => {
     console.log("adding to cart")
     this.props.addProductChairDispatcher(index);
+    
   }
 
   render() {
@@ -116,11 +117,9 @@ class Chairs extends Component {
                         <Button size="small" color="primary">
                           View
                           </Button>
-                          <Link className={classes.button} to="/shopping-cart">
                         <Button size="small" color="primary" onClick={this.handleClick(index)}>
                           Add to cart
                           </Button>
-                          </Link>
                         <Typography color="primary">
                           Price: ${card.product_price}, Stock Left:{" "}
                           {card.max_stock_available}
@@ -139,10 +138,10 @@ class Chairs extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.product)
+  console.log(state.order)
   return {
     items: state.product.chairData,
-    order: state.cart.chairOrder
+    index: state.cart.chairOrder
   }
 }
 

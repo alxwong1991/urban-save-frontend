@@ -92,11 +92,11 @@ export default function ExistUser() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link href="/sign-up" variant="body2">
                   {"Not a user yet? Sign Up"}
